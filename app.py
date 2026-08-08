@@ -6,7 +6,7 @@ from model.predict import get_anomaly_scores
 
 # ── Page config ───────────────────────────────────────────────
 st.set_page_config(page_title="HVAC Failure Predictor", layout="wide")
-st.title("🌡️ HVAC Equipment Failure Predictor")
+st.title("HVAC Equipment Failure Predictor")
 st.markdown("Real-time anomaly detection using rule-based alerts and machine learning.")
 
 # ── Sidebar ───────────────────────────────────────────────────
@@ -34,7 +34,7 @@ if df is not None:
     alerts_df = check_alerts(df)
 
     # ── Sensor Cards ─────────────────────────────────────────
-    st.subheader("📡 Latest Sensor Readings")
+    st.subheader("Latest Sensor Readings")
     latest = df.iloc[-1]
 
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -77,14 +77,14 @@ if df is not None:
     with col2:
         st.metric("Total Anomalies Detected", f"{total_anomalies} / {len(df)} readings")
         if avg_score > 0.70:
-            st.error("🔴 HIGH RISK — Immediate inspection recommended")
+            st.error("HIGH RISK — Immediate inspection recommended")
         elif avg_score > 0.40:
-            st.warning("⚠️ MODERATE RISK — Monitor closely")
+            st.warning("MODERATE RISK — Monitor closely")
         else:
-            st.success("✅ System operating normally")
+            st.success("System operating normally")
 
     # ── Time Series Chart ─────────────────────────────────────
-    st.subheader("📈 Sensor Trends Over Time")
+    st.subheader("Sensor Trends Over Time")
     sensor_options = [
         "supply_air_temp", "return_air_temp",
         "chilled_water_temp", "compressor_pressure", "vibration"
@@ -118,7 +118,7 @@ if df is not None:
         st.plotly_chart(fig, use_container_width=True)
 
     # ── Alert Log ─────────────────────────────────────────────
-    st.subheader("🚨 Rule-Based Alert Log")
+    st.subheader("Rule-Based Alert Log")
     if len(alerts_df) > 0:
         st.error(f"{len(alerts_df)} alerts triggered")
         st.dataframe(alerts_df, use_container_width=True)
@@ -126,4 +126,4 @@ if df is not None:
         st.success("No threshold violations detected")
 
 else:
-    st.info("👈 Select a data source in the sidebar to get started.")
+    st.info("Select a data source to get started.")
