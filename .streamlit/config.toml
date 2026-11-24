@@ -1,1 +1,14 @@
+# Matches https://ricardoagonzalezc.github.io  ("blueprint" theme)
+[theme]
+base = "dark"
+primaryColor = "#FFB020"
+backgroundColor = "#122A45"
+secondaryBackgroundColor = "#17324F"
+textColor = "#EAF2FA"
+font = "sans serif"
 
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false
